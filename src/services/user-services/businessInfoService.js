@@ -13,3 +13,5 @@ const getAddressFromBusinessName = (businessNameParams) => {
         withCredentials: true,
     });
 };
+
+export { getBusinessNames, getAddressFromBusinessName };
