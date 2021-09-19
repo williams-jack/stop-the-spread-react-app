@@ -12,7 +12,7 @@ const locationsPage = () => {
     const renderTable = () => {
         return (
             <div>
-                <table>
+                <table className="table">
                     <thead>
                         <th>Location Address</th>
                     </thead>
