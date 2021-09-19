@@ -1,9 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-const onSubmit = () => {};
-
-const LoginPage = () => {
+const LoginPage = ({ setLoggedIn }) => {
+    const history = useHistory();
+    const onSubmit = () => {
+        setLoggedIn(true);
+        history.push("/status");
+    };
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -18,8 +21,9 @@ const LoginPage = () => {
                 <input type="text" />
                 <label>Password:</label>
                 <input type="password" />
+                <button type="submit">Login</button>
             </form>
-            <Link>Don't have an account? Sign up here.</Link>
+            <Link to="/register">Don't have an account? Sign up here.</Link>
         </div>
     );
 };
