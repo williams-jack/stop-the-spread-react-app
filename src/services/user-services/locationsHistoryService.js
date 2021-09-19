@@ -1,10 +1,9 @@
-// import React from "react";
 import axios from "axios";
-import { backendURL } from "../service-constants";
+import { backendURL } from "../serviceConstants";
 
-// Add a loction
-export const addLocation = (sessionID, req) => {
-    axios.get("/business/locations/addLocation", {
+// Add an entry
+export const addEntry = (sessionID, req) => {
+    axios.post("/user/locationHistory/addEntry", {
         baseURL: backendURL,
         withCredentials: true,
         data: req
@@ -15,9 +14,9 @@ export const addLocation = (sessionID, req) => {
     });
 };
 
-// Edit a location
-export const editLocation = (sessionID, req) => {
-    axios.get("/business/locations/editLocation", {
+// Edit an entry
+export const editEntry = (sessionID, req) => {
+    axios.post("/user/locationHistory/editEntry", {
         baseURL: backendURL,
         withCredentials: true,
         data: req
@@ -28,9 +27,9 @@ export const editLocation = (sessionID, req) => {
     });
 };
 
-// Delete a location
-export const deleteLocation = (sessionID, req) => {
-    axios.get("/business/locations/deleteLocation", {
+// Delete an entry
+export const deleteEntry = (sessionID, req) => {
+    axios.get("/user/locationHistory/deleteEntry", {
         baseURL: backendURL,
         withCredentials: true,
         data: req
@@ -41,9 +40,9 @@ export const deleteLocation = (sessionID, req) => {
     });
 };
 
-// Get locations
-export const getLocations = (sessionID) => {
-    axios.get("/business/locations/getLocations", {
+// Get entries
+export const getEntry = (sessionID) => {
+    axios.get("/user/locationHistory/entries", {
         baseURL: backendURL,
         withCredentials: true,
     }).then(function (response) {
