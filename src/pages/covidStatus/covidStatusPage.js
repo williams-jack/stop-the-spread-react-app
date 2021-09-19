@@ -3,12 +3,16 @@ const COVIDStatusPage = () => {
     const [covidStatus, setCovidStatus] = useState("Negative");
     return (
         <div>
-            <h2>Current COVID-19 Status</h2>
-            <h1>{covidStatus}</h1>
-            <button>
-                Update Status to{" "}
-                {covidStatus === "Negative" ? "Positive" : "Negative"}
-            </button>
+            <div className="d-flex flex-column justify-content-center">
+                <h2 className="d-flex justify-content-center">
+                    Current COVID-19 Status
+                </h2>
+                <h3 className="d-flex justify-content-center">{covidStatus}</h3>
+                <button className="btn-lg btn-danger">
+                    Update Status to{" "}
+                    {covidStatus === "Negative" ? "Positive" : "Negative"}
+                </button>
+            </div>
         </div>
     );
 };

@@ -8,22 +8,38 @@ const LoginPage = ({ setLoggedIn }) => {
         history.push("/status");
     };
     return (
-        <div>
-            <form onSubmit={onSubmit}>
-                <label>Type of Account</label>
-                <select id="roles">
-                    <option value="Business">Business</option>
-                    <option value="User" selected>
-                        Individual
-                    </option>
-                </select>
-                <label>Username:</label>
-                <input type="text" />
-                <label>Password:</label>
-                <input type="password" />
-                <button type="submit">Login</button>
+        <div className="d-flex justify-content-center">
+            <form className="w-75" onSubmit={onSubmit}>
+                <div className="mb-3">
+                    <label className="form-label" for="roles">
+                        Type of Account
+                    </label>
+                    <select id="roles" className="form-control">
+                        <option value="Business">Business</option>
+                        <option value="User" selected>
+                            Individual
+                        </option>
+                    </select>
+                </div>
+                <div classname="mb-3">
+                    <label className="form-label">Username:</label>
+                    <input className="form-control" type="username" />
+                </div>
+                <div classname="mb-3">
+                    <label className="form-label">Password:</label>
+                    <input className="form-control" type="password" />
+                </div>
+                <div className="d-flex mt-3 mb-2 justify-content-center">
+                    <button className="btn btn-success w-100" type="submit">
+                        Login
+                    </button>
+                </div>
+                <div className="d-flex justify-content-center">
+                    <Link to="/register" className="text-center">
+                        Don't have an account? Sign up here.
+                    </Link>
+                </div>
             </form>
-            <Link to="/register">Don't have an account? Sign up here.</Link>
         </div>
     );
 };

@@ -17,17 +17,20 @@ import "bootstrap/dist/js/bootstrap.min.js";
 
 const loggedOutView = (loggedIn, setLoggedIn) => {
     return (
-        <Switch>
-            <Route exact path="/login">
-                <LoginPage setLoggedIn={setLoggedIn} />
-            </Route>
-            <Route exact path="/register">
-                <RegisterPage setLoggedIn={setLoggedIn} />
-            </Route>
-            <Route path="*">
-                <Redirect to="/login" />
-            </Route>
-        </Switch>
+        <div className="container">
+            <h1 className="display-5 text-center">StopTheSpread</h1>
+            <Switch>
+                <Route exact path="/login">
+                    <LoginPage setLoggedIn={setLoggedIn} />
+                </Route>
+                <Route exact path="/register">
+                    <RegisterPage setLoggedIn={setLoggedIn} />
+                </Route>
+                <Route path="*">
+                    <Redirect to="/login" />
+                </Route>
+            </Switch>
+        </div>
     );
 };
 
@@ -35,17 +38,19 @@ const loggedInView = (loggedIn, setLoggedIn) => {
     return (
         <div>
             <NavbarComponent />
-            <Switch>
-                <Route exact path="/status">
-                    <COVIDStatusPage />
-                </Route>
-                <Route exact path="/history">
-                    <LocationHistoryPage />
-                </Route>
-                <Route path="*">
-                    <NotFoundErrorPage />
-                </Route>
-            </Switch>
+            <div className="container mt-2">
+                <Switch>
+                    <Route exact path="/status">
+                        <COVIDStatusPage />
+                    </Route>
+                    <Route exact path="/history">
+                        <LocationHistoryPage />
+                    </Route>
+                    <Route path="*">
+                        <NotFoundErrorPage />
+                    </Route>
+                </Switch>
+            </div>
         </div>
     );
 };
