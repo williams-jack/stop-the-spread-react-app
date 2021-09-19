@@ -10,8 +10,8 @@ import NotFoundErrorPage from "./pages/error/error404Page";
 import RegisterPage from "./pages/register/registerPage";
 import Cookies from "js-cookie";
 import NavbarComponent from "./pages/components/navbar";
-import COVIDStatusPage from "./pages/covidStatus/covidStatusPage";
-import LocationHistoryPage from "./pages/location-history/locationHistoryPage";
+import COVIDStatusPage from "./pages/user-pages/covidStatus/covidStatusPage";
+import LocationHistoryPage from "./pages/user-pages/locaton-history/locationHistoryPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 
