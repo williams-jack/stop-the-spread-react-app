@@ -2,53 +2,30 @@ import axios from "axios";
 import { backendURL } from "../serviceConstants";
 
 // Add an entry
-export const addEntry = (sessionID, req) => {
-    axios.post("/user/locationHistory/addEntry", {
-        baseURL: backendURL,
+export const addEntry = async (jsonPackage) => {
+    return axios.post(`${backendURL}/user/locationHistory/addEntry`, jsonPackage, {
         withCredentials: true,
-        data: req
-    }).then(function (response) {
-        return response.data;
-    }).catch(function (error) {
-        console.log(error);
     });
 };
 
 // Edit an entry
-export const editEntry = (sessionID, req) => {
-    axios.post("/user/locationHistory/editEntry", {
-        baseURL: backendURL,
+export const editEntry = async (jsonPackage) => {
+    return axios.post(`${backendURL}/user/locationHistory/editEntry`, jsonPackage, {
         withCredentials: true,
-        data: req
-    }).then(function (response) {
-        return response.data;
-    }).catch(function (error) {
-        console.log(error);
     });
 };
 
 // Delete an entry
-export const deleteEntry = (sessionID, req) => {
-    axios.delete("/user/locationHistory/deleteEntry", {
-        baseURL: backendURL,
+export const deleteEntry = async (jsonPackage) => {
+    return axios.delete(`${backendURL}/user/locationHistory/deleteEntry`, jsonPackage, {
         withCredentials: true,
-        data: req
-    }).then(function (response) {
-        return response.data;
-    }).catch(function (error) {
-        console.log(error);
     });
 };
 
 // Get entries
-export const getEntry = (sessionID) => {
-    axios.get("/user/locationHistory/entries", {
-        baseURL: backendURL,
+export const getEntry = async () => {
+    return axios.get(`${backendURL}/user/locationHistory/entries`, {
         withCredentials: true,
-    }).then(function (response) {
-        return response.data;
-    }).catch(function (error) {
-        console.log(error);
     });
 };
 
