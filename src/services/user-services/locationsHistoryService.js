@@ -29,7 +29,7 @@ export const editEntry = (sessionID, req) => {
 
 // Delete an entry
 export const deleteEntry = (sessionID, req) => {
-    axios.get("/user/locationHistory/deleteEntry", {
+    axios.delete("/user/locationHistory/deleteEntry", {
         baseURL: backendURL,
         withCredentials: true,
         data: req
