@@ -15,7 +15,8 @@ const LocationHistoryPage = () => {
         getEntry()
             .then((res) => {
                 if (res.status == 200) {
-                    setEntries(res.data.entries);
+                    console.log(res);
+                    setEntries(res.data);
                 }
             })
             .catch((err) => {
@@ -24,11 +25,16 @@ const LocationHistoryPage = () => {
     }, [setEntries]);
 
     const renderTableRow = (entry) => {
+        console.log("hello");
+        console.log(entry);
+        const addressString = addressToString(entry.businessLocation);
+        const timeIn = entry.timeIn.toString();
+        const timeOut = entry.timeOut.toString();
         return (
             <tr>
-                <td>{addressToString(entry.businessLocation)}</td>
-                <td>{entry.timeIn.toString()}</td>
-                <td>{entry.timeOut.toString()}</td>
+                <td>{addressString}</td>
+                <td>{timeIn}</td>
+                <td>{timeOut}</td>
             </tr>
         );
     };
@@ -42,7 +48,11 @@ const LocationHistoryPage = () => {
                         <th>Date/Time In</th>
                         <th>Date/Time Out</th>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        {entries.map((entry) => {
+                            return renderTableRow(entry);
+                        })}
+                    </tbody>
                 </table>
                 <button className="btn btn-success" onClick={changeToEntryForm}>
                     Add Entry
@@ -50,6 +60,10 @@ const LocationHistoryPage = () => {
             </div>
         );
     };
-    return addingEntry ? <AddLocationHistoryEntryFormComponent /> : renderTable;
+    return addingEntry ? (
+        <AddLocationHistoryEntryFormComponent setAddingEntry={setAddingEntry} />
+    ) : (
+        renderTable()
+    );
 };
 export default LocationHistoryPage;

@@ -2,7 +2,7 @@ import axios from "axios";
 import { backendURL } from "../serviceConstants";
 
 const getBusinessNames = () => {
-    return axios.get(`${backendURL}/user/businessInfo/getBusinessNames`, {
+    return axios.get(`${backendURL}/user/businessInfo/businessNames`, {
         withCredentials: true,
     });
 };

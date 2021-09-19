@@ -3,15 +3,18 @@ const backendURL = "http://localhost:5000";
 
 const addressToString = (addressObject) => {
     if (!addressObject.addressLineTwo) {
+        console.log("Has now second line.");
         return (
             `${addressObject.addressLineOne},` +
-            ` ${addressObject.city}, ${addressObject.state} ${addressObjec.zipcode}`
+            ` ${addressObject.city}, ${addressObject.state} ${addressObject.zipcode}`
         );
     } else {
-        return (
+        console.log("Has line 2.");
+        const addressString =
             `${addressObject.addressLineOne} ${addressObject.addressLineTwo},` +
-            ` ${addressObject.city}, ${addressObject.state} ${addressObjec.zipcode}`
-        );
+            ` ${addressObject.city}, ${addressObject.state} ${addressObject.zipCode}`;
+        console.log(addressString);
+        return addressToString;
     }
 };
 

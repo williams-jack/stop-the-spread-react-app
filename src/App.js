@@ -8,13 +8,11 @@ import {
 import LoginPage from "./pages/login/loginPage";
 import NotFoundErrorPage from "./pages/error/error404Page";
 import RegisterPage from "./pages/register/registerPage";
-import Cookies from "js-cookie";
 import NavbarComponent from "./pages/components/navbar";
 import COVIDStatusPage from "./pages/user-pages/covidStatus/covidStatusPage";
-import LocationHistoryPage from "./pages/user-pages/locaton-history/locationHistoryPage";
+import LocationHistoryPage from "./pages/user-pages/location-history/locationHistoryPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
-import { useEffect } from "react/cjs/react.development";
 
 const loggedOutView = (setLoggedIn, setRole, setUsername) => {
     return (
@@ -54,6 +52,9 @@ const loggedInView = (setLoggedIn, role, username) => {
                     </Route>
                     <Route exact path="/history">
                         <LocationHistoryPage />
+                    </Route>
+                    <Route path="/">
+                        <Redirect to="/status" />
                     </Route>
                     <Route path="*">
                         <NotFoundErrorPage />

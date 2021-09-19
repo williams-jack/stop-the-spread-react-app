@@ -40,5 +40,3 @@ export const getEntry = async () => {
         withCredentials: true,
     });
 };
-
-export { addEntry, getEntry };
