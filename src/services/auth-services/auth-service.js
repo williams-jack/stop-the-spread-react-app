@@ -1,41 +1,22 @@
 // AUthentication methods for accounts.
 import axios from "axios";
-import { backendURL } from "../service-constants";
+import { backendURL } from "../serviceConstants";
 const login = async (jsonPackage) => {
-    console.log(`${backendURL}/login`);
-    console.log(jsonPackage);
     return axios.post(`${backendURL}/login`, jsonPackage, {
         withCredentials: true,
     });
 };
 
 const register = (jsonPackage) => {
-    axios
-        .post(`${backendURL}/register`, jsonPackage, {
-            withCredentials: true,
-        })
-        .then((res) => {
-            return {
-                data: res.data,
-                status: res.status,
-            };
-        })
-        .catch((err) => {
-            console.error(err);
-        });
+    axios.post(`${backendURL}/register`, jsonPackage, {
+        withCredentials: true,
+    });
 };
 
 const logout = () => {
-    axios
-        .post(`${backendURL}/logout`, null, {
-            withCredentials: true,
-        })
-        .then((res) => {
-            return res.status;
-        })
-        .catch((err) => {
-            console.error(err);
-        });
+    axios.post(`${backendURL}/logout`, null, {
+        withCredentials: true,
+    });
 };
 
 export { login, logout, register };

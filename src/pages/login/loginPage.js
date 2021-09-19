@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { login } from "../../services/auth-services/auth-service";
 
-const LoginPage = ({ setLoggedIn }) => {
+const LoginPage = ({ setLoggedIn, setRole, setUsername }) => {
     const [loginPayload, setLoginPayload] = useState({
         role: "User",
     });
@@ -17,11 +17,25 @@ const LoginPage = ({ setLoggedIn }) => {
     const history = useHistory();
     const onSubmit = () => {
         console.log("Called on submit.");
-        login(loginPayload)
-            .then((res) => {
-                console.log(res.data);
-            })
-            .catch((err) => console.error(err));
+        login(loginPayload).then((res) => {
+            if (res.status == 200) {
+                // Mark user as logged in.
+                setLoggedIn(true);
+
+                // Set username in app.
+                setUsername(res.data.username);
+                window.localStorage.setItem("username", res.data.username);
+
+                // Set role in app.
+                setRole(res.data.role);
+                window.localStorage.setItem("role", res.data.role);
+
+                // Push user to home tab.
+                history.push("/");
+            } else {
+                // TODO: Flash message to the user.
+            }
+        });
     };
     return (
         <div className="d-flex justify-content-center">

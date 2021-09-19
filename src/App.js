@@ -14,17 +14,26 @@ import COVIDStatusPage from "./pages/user-pages/covidStatus/covidStatusPage";
 import LocationHistoryPage from "./pages/user-pages/locaton-history/locationHistoryPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import { useEffect } from "react/cjs/react.development";
 
-const loggedOutView = (loggedIn, setLoggedIn) => {
+const loggedOutView = (setLoggedIn, setRole, setUsername) => {
     return (
         <div className="container">
             <h1 className="display-5 text-center">StopTheSpread</h1>
             <Switch>
                 <Route exact path="/login">
-                    <LoginPage setLoggedIn={setLoggedIn} />
+                    <LoginPage
+                        setLoggedIn={setLoggedIn}
+                        setRole={setRole}
+                        setUsername={setUsername}
+                    />
                 </Route>
                 <Route exact path="/register">
-                    <RegisterPage setLoggedIn={setLoggedIn} />
+                    <RegisterPage
+                        setLoggedIn={setLoggedIn}
+                        setRole={setRole}
+                        setUsername={setUsername}
+                    />
                 </Route>
                 <Route path="*">
                     <Redirect to="/login" />
@@ -34,10 +43,10 @@ const loggedOutView = (loggedIn, setLoggedIn) => {
     );
 };
 
-const loggedInView = (loggedIn, setLoggedIn) => {
+const loggedInView = (setLoggedIn, role, username) => {
     return (
         <div>
-            <NavbarComponent />
+            <NavbarComponent role={role} />
             <div className="container mt-2">
                 <Switch>
                     <Route exact path="/status">
@@ -56,13 +65,17 @@ const loggedInView = (loggedIn, setLoggedIn) => {
 };
 
 function App() {
-    const [sessionID, setSessionID] = useState(Cookies.get("SESSIONID"));
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [role, setRole] = useState(window.localStorage.getItem("role"));
+    const [username, setUsername] = useState(
+        window.localStorage.getItem("username")
+    );
+    const [loggedIn, setLoggedIn] = useState(role && username);
+
     return (
         <Router>
             {loggedIn
                 ? loggedInView(loggedIn, setLoggedIn)
-                : loggedOutView(loggedIn, setLoggedIn)}
+                : loggedOutView(setLoggedIn, setRole, setUsername)}
         </Router>
     );
 }
