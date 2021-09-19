@@ -2,27 +2,16 @@ import axios from "axios";
 import { backendURL } from "../serviceConstants";
 
 // Delete a notification
-export const deleteNotification = (sessionID, req) => {
-    axios.delete("/user/notifications/deleteNotifications", {
-        baseURL: backendURL,
+export const deleteNotification = async (jsonPackage) => {
+    return axios.delete(`${backendURL}/user/notifications/deleteNotifications`, jsonPackage, {
         withCredentials: true,
-        data: req
-    }).then(function (response) {
-        return response.data;
-    }).catch(function (error) {
-        console.log(error);
     });
 };
 
 // Get notification
-export const getNotifications = (sessionID) => {
-    axios.get("/user/notifications/getNotifications", {
-        baseURL: backendURL,
+export const getNotifications = async () => {
+    return axios.get(`${backendURL}/user/notifications/getNotifications`, {
         withCredentials: true,
-    }).then(function (response) {
-        return response.data;
-    }).catch(function (error) {
-        console.log(error);
     });
 };
 

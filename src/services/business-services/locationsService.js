@@ -2,64 +2,29 @@ import axios from "axios";
 import { backendURL } from "../serviceConstants";
 
 // Add a loction
-export const addLocation = (sessionID, req) => {
-    axios
-        .post("/business/locations/addLocation", {
-            baseURL: backendURL,
-            withCredentials: true,
-            data: req,
-        })
-        .then(function (response) {
-            return response.data;
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+export const addLocation = async (jsonPackage) => {
+    return axios.post(`${backendURL}/business/locations/addLocation`, jsonPackage, {
+        withCredentials: true,
+    });
 };
 
 // Edit a location
-export const editLocation = (sessionID, req) => {
-    axios
-        .post("/business/locations/editLocation", {
-            baseURL: backendURL,
-            withCredentials: true,
-            data: req,
-        })
-        .then(function (response) {
-            return response.data;
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+export const editLocation = async (jsonPackage) => {
+    return axios.post(`${backendURL}/business/locations/editLocation`, jsonPackage, {
+        withCredentials: true,
+    });
 };
 
 // Delete a location
-export const deleteLocation = (sessionID, req) => {
-    axios
-        .delete("/business/locations/deleteLocation", {
-            baseURL: backendURL,
-            withCredentials: true,
-            data: req,
-        })
-        .then(function (response) {
-            return response.data;
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+export const deleteLocation = async (jsonPackage) => {
+    return axios.delete(`${backendURL}/business/locations/deleteLocation`, jsonPackage, {
+        withCredentials: true,
+    });
 };
 
 // Get locations
-export const getLocations = (sessionID) => {
-    axios
-        .get("/business/locations/getLocations", {
-            baseURL: backendURL,
-            withCredentials: true,
-        })
-        .then(function (response) {
-            return response.data;
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+export const getLocations = async () => {
+    return axios.get(`${backendURL}/business/locations/getLocations`, {
+        withCredentials: true,
+    });
 };

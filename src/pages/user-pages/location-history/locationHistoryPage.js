@@ -1,7 +1,7 @@
 import React from "react";
 const LocationHistoryPage = () => {
     return (
-        <table>
+        <table className="table">
             <thead>
                 <th>Location</th>
                 <th>Date/Time In</th>
