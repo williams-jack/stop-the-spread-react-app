@@ -1,16 +1,55 @@
+// import React from "react";
+import axios from "axios";
+import { backendURL } from "../service-constants";
+
 // Add a loction
-const addLocation = () => {
-    // Use axios to make call to back end
+export const addLocation = (sessionID, req) => {
+    axios.get("/business/locations/addLocation", {
+        baseURL: backendURL,
+        withCredentials: true,
+        data: req
+    }).then(function (response) {
+        return response.data;
+    }).catch(function (error) {
+        console.log(error);
+    });
 };
+
 // Edit a location
-const editLocation = () => {
-    // Use axios to make call to back end
+export const editLocation = (sessionID, req) => {
+    axios.get("/business/locations/editLocation", {
+        baseURL: backendURL,
+        withCredentials: true,
+        data: req
+    }).then(function (response) {
+        return response.data;
+    }).catch(function (error) {
+        console.log(error);
+    });
 };
+
 // Delete a location
-const deleteLocation = () => {
-    // Use axios to make call to back end
+export const deleteLocation = (sessionID, req) => {
+    axios.get("/business/locations/deleteLocation", {
+        baseURL: backendURL,
+        withCredentials: true,
+        data: req
+    }).then(function (response) {
+        return response.data;
+    }).catch(function (error) {
+        console.log(error);
+    });
 };
+
 // Get locations
-const getLocations = () => {
-    // Use axios to make call to back end
+export const getLocations = (sessionID) => {
+    axios.get("/business/locations/getLocations", {
+        baseURL: backendURL,
+        withCredentials: true,
+    }).then(function (response) {
+        return response.data;
+    }).catch(function (error) {
+        console.log(error);
+    });
 };
+
