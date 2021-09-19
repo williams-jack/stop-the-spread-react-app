@@ -1,20 +1,9 @@
 import React, { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
+import { addressToString } from "../../../../services/serviceConstants";
 import { getAddressFromBusinessName, getBusinessNames } from "../../../../services/user-services/businessInfoService";
+import { addEntry } from "../../../../services/user-services/locationsHistoryService";
 
-const addressToString = (addressObject) => {
-    if (!addressObject.addressLineTwo) {
-        return (
-            `${addressObject.addressLineOne},` +
-            ` ${addressObject.city}, ${addressObject.state} ${addressObjec.zipcode}`
-        );
-    } else {
-        return (
-            `${addressObject.addressLineOne} ${addressObject.addressLineTwo},` +
-            ` ${addressObject.city}, ${addressObject.state} ${addressObjec.zipcode}`
-        );
-    }
-};
 const renderAddressOption = (addressObject) => {
     return (
         <option value={addressObject._id}>
@@ -89,7 +78,10 @@ const AddLocationHistoryEntryFormComponent = () => {
         let businessLocation = locationHistoryEntryInfo.businessLocation;
         
         const requestJSON = {timeIn, timeOut, businessLocation};
+        console.log(requestJSON);
+        addEntry(requestJSON).then(() => {
 
+        });
         
     }
 
